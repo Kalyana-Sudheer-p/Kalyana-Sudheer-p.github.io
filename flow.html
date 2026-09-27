@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cloud delivery pipeline animation</title>
+  <link rel="stylesheet" href="/flow.css">
+  <script src="/flow.js" defer></script>
+</head>
+<body>
+  <main class="canvas" aria-label="Git source moving through CI/CD and infrastructure as code into three cloud platforms">
+    <div class="grid"></div>
+    <svg class="connections" viewBox="0 0 620 420" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="route" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#7cb9ff"/><stop offset=".5" stop-color="#56efb0"/><stop offset="1" stop-color="#ff9b62"/></linearGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <path class="route route-one" pathLength="1" d="M108 210 C155 210 160 123 220 123"/>
+      <path class="route route-two" pathLength="1" d="M298 123 C348 123 344 210 393 210"/>
+      <path class="route route-aws" pathLength="1" d="M461 210 C505 210 504 88 548 88"/>
+      <path class="route route-azure" pathLength="1" d="M461 210 C505 210 504 210 548 210"/>
+      <path class="route route-gcp" pathLength="1" d="M461 210 C505 210 504 332 548 332"/>
+      <circle class="packet packet-one" r="4" fill="#56efb0" filter="url(#glow)"/>
+      <circle class="packet packet-two" r="4" fill="#56efb0" filter="url(#glow)"/>
+    </svg>
+
+    <section class="node source" data-stage="source">
+      <span class="node-icon git-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div><small>Source</small><strong>GitHub</strong><em>commit pushed</em></div>
+      <b class="status">ready</b>
+    </section>
+    <section class="node pipeline" data-stage="pipeline">
+      <span class="node-icon pipeline-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div><small>Continuous delivery</small><strong>Build · Test · Scan</strong><em>GitHub Actions</em></div>
+      <b class="status">queued</b>
+    </section>
+    <section class="node infra" data-stage="infra">
+      <span class="node-icon infra-icon" aria-hidden="true">IaC</span>
+      <div><small>Infrastructure</small><strong>Terraform</strong><em>plan &amp; apply</em></div>
+      <b class="status">waiting</b>
+    </section>
+
+    <section class="cloud-stack" aria-label="Cloud targets">
+      <article class="cloud aws" data-cloud="aws"><span class="cloud-mark">aws</span><div><small>Amazon Web Services</small><strong>ECS · EKS</strong></div><b></b></article>
+      <article class="cloud azure" data-cloud="azure"><span class="cloud-mark">AZ</span><div><small>Microsoft Azure</small><strong>AKS · DevOps</strong></div><b></b></article>
+      <article class="cloud gcp" data-cloud="gcp"><span class="cloud-mark">G</span><div><small>Google Cloud</small><strong>GKE · Cloud Run</strong></div><b></b></article>
+    </section>
+
+    <div class="progress-panel"><span>Delivery progress</span><strong data-percent>0%</strong><i><b data-bar></b></i></div>
+    <div class="event-log" aria-live="polite"><span class="event-dot"></span><code data-event>waiting for commit</code></div>
+  </main>
+</body>
+</html>
