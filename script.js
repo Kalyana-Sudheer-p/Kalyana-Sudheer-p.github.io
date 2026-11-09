@@ -50,3 +50,33 @@ if (flowFrame) {
 }
 
 document.querySelector('[data-year]').textContent = new Date().getFullYear();
+
+const cloudTabs = Array.from(document.querySelectorAll('[data-cloud-tab]'));
+const cloudPanels = Array.from(document.querySelectorAll('[data-cloud-panel]'));
+
+function selectCloudTab(selectedTab) {
+  const selectedCloud = selectedTab.dataset.cloudTab;
+  cloudTabs.forEach((tab) => {
+    const active = tab === selectedTab;
+    tab.setAttribute('aria-selected', String(active));
+    tab.tabIndex = active ? 0 : -1;
+  });
+  cloudPanels.forEach((panel) => {
+    panel.hidden = panel.dataset.cloudPanel !== selectedCloud;
+  });
+  selectedTab.focus();
+}
+
+cloudTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectCloudTab(tab));
+  tab.addEventListener('keydown', (event) => {
+    let next = index;
+    if (event.key === 'ArrowRight') next = (index + 1) % cloudTabs.length;
+    else if (event.key === 'ArrowLeft') next = (index - 1 + cloudTabs.length) % cloudTabs.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = cloudTabs.length - 1;
+    else return;
+    event.preventDefault();
+    selectCloudTab(cloudTabs[next]);
+  });
+});

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Cloud and DevOps engineering for startups and product teams: AWS, Azure, GCP, Kubernetes, CI/CD, Terraform, observability, security and cost optimization.">
+  <meta name="description" content="Secure, cost-conscious cloud infrastructure on AWS, Azure, and GCP. Explore practical reference architectures, Kubernetes delivery, identity controls, observability, and real engineering outcomes.">
   <meta name="theme-color" content="#07111f">
   <title>Kalyana Sudheer | Cloud &amp; DevOps Engineering</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -21,9 +21,10 @@
       <span></span><span></span><span></span><span class="sr-only">Toggle navigation</span>
     </button>
     <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
-      <a href="#services">Services</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#services">Capabilities</a>
       <a href="#security">Security</a>
-      <a href="#work">Use cases</a>
+      <a href="#work">Evidence</a>
       <a href="#process">Process</a>
       <a href="#about">About</a>
       <a class="nav-cta" href="#contact">Start a conversation</a>
@@ -36,10 +37,10 @@
       <div class="hero-copy reveal">
         <p class="eyebrow"><span></span> Independent cloud &amp; DevOps engineering</p>
         <h1>Cloud systems that <em>ship faster</em> and stay dependable.</h1>
-        <p class="hero-lede">I help product teams automate delivery, modernize cloud infrastructure, and operate Kubernetes with fewer manual steps—across AWS, Azure, and GCP, within defined security boundaries.</p>
+        <p class="hero-lede">I design and implement secure, cost-conscious infrastructure on AWS, Azure, and GCP. Explore how identity, networking, delivery, scaling, and observability come together on each platform.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="mailto:kalyanasudheer.p@gmail.com?subject=Cloud%20%26%20DevOps%20project%20inquiry">Discuss your project <span aria-hidden="true">↗</span></a>
-          <a class="button button-secondary" href="#work">See how I help</a>
+          <a class="button button-secondary" href="#architecture">Explore the architecture</a>
         </div>
         <div class="trust-row" aria-label="Core experience">
           <div><strong>4+ years</strong><span>hands-on experience</span></div>
@@ -51,7 +52,7 @@
         <div class="flow-label"><span class="flow-live"></span> Scroll-driven delivery path <small>scroll ↓ to deploy · ↑ to reverse</small></div>
         <iframe class="flow-frame" src="/flow.html" title="Animated delivery pipeline from GitHub through CI/CD and infrastructure as code to AWS, Azure, and Google Cloud" sandbox="allow-scripts allow-same-origin" data-flow-frame></iframe>
       </div>
-      <a class="scroll-cue" href="#services"><span>Explore capabilities</span><i aria-hidden="true"></i></a>
+      <a class="scroll-cue" href="#architecture"><span>Explore the architecture</span><i aria-hidden="true"></i></a>
     </section>
 
     <section class="logo-strip" aria-label="Technology experience">
@@ -63,7 +64,7 @@
       <div class="cloud-platform-intro">
         <p class="eyebrow"><span></span> Multi-cloud by design</p>
         <h2 id="cloud-platform-title">One delivery standard.<br>Three cloud platforms.</h2>
-        <p>Use the platform that fits the workload while keeping deployment, security, and operations consistent.</p>
+        <p>Use the platform that fits the workload, with security controls and running costs considered from the first design decision.</p>
       </div>
       <div class="platform-grid">
         <article class="platform-card aws-platform">
@@ -79,16 +80,57 @@
         <article class="platform-card gcp-platform">
           <div class="platform-logo"><span>G</span></div>
           <div><small>Cloud-native workloads</small><h3>Google Cloud</h3><p>Portable Kubernetes workloads and managed cloud services within consistent multi-cloud delivery patterns.</p></div>
-          <ul><li>GKE</li><li>Cloud Run</li><li>Cloud IAM</li><li>Artifact Registry</li><li>Cloud Monitoring</li></ul>
+          <ul><li>GKE</li><li>Cloud Composer</li><li>Airflow</li><li>Helm</li><li>Kustomize</li></ul>
         </article>
       </div>
     </section>
 
+    <section class="section architecture" id="architecture" aria-labelledby="architecture-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span></span> Infrastructure reference designs</p>
+        <h2 id="architecture-title">Secure access and predictable cost, on the cloud you choose.</h2>
+        <p>These are reference designs for a containerized application. The service choices change with the workload; the engineering principles stay consistent.</p>
+      </div>
+      <div class="architecture-principles" aria-label="Shared design principles">
+        <span>Version-controlled infrastructure</span>
+        <span>Scoped identities and secrets</span>
+        <span>Measured capacity and spend</span>
+        <span>Observable operations</span>
+      </div>
+      <div class="architecture-tabs" role="tablist" aria-label="Choose a cloud platform">
+        <button type="button" role="tab" id="tab-aws" aria-controls="panel-aws" aria-selected="true" tabindex="0" data-cloud-tab="aws">AWS</button>
+        <button type="button" role="tab" id="tab-azure" aria-controls="panel-azure" aria-selected="false" tabindex="-1" data-cloud-tab="azure">Azure</button>
+        <button type="button" role="tab" id="tab-gcp" aria-controls="panel-gcp" aria-selected="false" tabindex="-1" data-cloud-tab="gcp">GCP</button>
+      </div>
+
+      <div class="architecture-panel" id="panel-aws" role="tabpanel" aria-labelledby="tab-aws" tabindex="0" data-cloud-panel="aws">
+        <div class="architecture-panel-heading"><div><span class="architecture-kicker">AWS · Reference design</span><h3>Choose the smallest suitable runtime, then control access and capacity.</h3></div><span class="architecture-mark">AWS</span></div>
+        <div class="architecture-path" aria-label="AWS delivery path"><div><small>01 · Define</small><strong>Terraform + VPC</strong></div><div><small>02 · Deliver</small><strong>GitHub Actions + ECR</strong></div><div><small>03 · Run</small><strong>ECS or EKS</strong></div><div><small>04 · Observe</small><strong>CloudWatch + alerts</strong></div></div>
+        <div class="architecture-decisions"><div><h4>Security boundaries</h4><p>Short-lived GitHub OIDC access, task-specific IAM roles, explicit ingress and egress, and secrets kept outside source control.</p></div><div><h4>Cost decisions</h4><p>Compare ECS and EKS against actual workload needs; right-size tasks or node pools, scale with demand, and budget for networking and logs.</p></div></div>
+        <p class="architecture-evidence"><strong>Experience:</strong> Built an ECS delivery demonstration; reduced non-production EC2 spend by 26% through Karpenter and right-sized node pools.</p>
+      </div>
+
+      <div class="architecture-panel" id="panel-azure" role="tabpanel" aria-labelledby="tab-azure" tabindex="0" data-cloud-panel="azure" hidden>
+        <div class="architecture-panel-heading"><div><span class="architecture-kicker">Azure · Reference design</span><h3>Deliver on AKS with identities and operating controls built in.</h3></div><span class="architecture-mark">AZ</span></div>
+        <div class="architecture-path" aria-label="Azure delivery path"><div><small>01 · Define</small><strong>Terraform + network</strong></div><div><small>02 · Deliver</small><strong>Azure Pipelines</strong></div><div><small>03 · Run</small><strong>AKS + Helm</strong></div><div><small>04 · Observe</small><strong>Azure Monitor</strong></div></div>
+        <div class="architecture-decisions"><div><h4>Security boundaries</h4><p>Entra ID and RBAC for people, managed identities for workloads, Key Vault for secrets, and network access scoped to the application.</p></div><div><h4>Cost decisions</h4><p>Size AKS node pools for real demand, autoscale suitable workloads, and review monitoring retention and network charges.</p></div></div>
+        <p class="architecture-evidence"><strong>Experience:</strong> Delivered 10+ microservices to AKS through Azure Pipelines, integrated Key Vault and managed identities, and administered Entra ID RBAC.</p>
+      </div>
+
+      <div class="architecture-panel" id="panel-gcp" role="tabpanel" aria-labelledby="tab-gcp" tabindex="0" data-cloud-panel="gcp" hidden>
+        <div class="architecture-panel-heading"><div><span class="architecture-kicker">GCP · Reference design</span><h3>Give each GKE workload a clear identity, purpose, and capacity limit.</h3></div><span class="architecture-mark">GCP</span></div>
+        <div class="architecture-path" aria-label="GCP delivery path"><div><small>01 · Define</small><strong>Terraform + VPC</strong></div><div><small>02 · Deliver</small><strong>Git-based CI/CD</strong></div><div><small>03 · Run</small><strong>GKE + Airflow</strong></div><div><small>04 · Observe</small><strong>Cloud Monitoring</strong></div></div>
+        <div class="architecture-decisions"><div><h4>Security boundaries</h4><p>Workload Identity Federation for GKE, scoped IAM permissions, controlled network routes, and separate access for each application.</p></div><div><h4>Cost decisions</h4><p>Right-size node pools and Airflow workers, scale workloads with demand, and track storage, data transfer, and log retention.</p></div></div>
+        <p class="architecture-evidence"><strong>Experience:</strong> Operated workloads across GKE and Cloud Composer; later consolidated Airflow orchestration onto AWS and decommissioned the GCP cluster.</p>
+      </div>
+      <p class="architecture-note">Reference designs show how I would approach implementation. Experience notes describe work delivered in production or in the AWS sandbox.</p>
+    </section>
+
     <section class="section services" id="services">
       <div class="section-heading reveal">
-        <p class="eyebrow"><span></span> What I solve</p>
-        <h2>Practical engineering for the parts of cloud that slow teams down.</h2>
-        <p>Focused engagements with clear outcomes, documented handover, and systems your team can own after delivery.</p>
+        <p class="eyebrow"><span></span> Implementation capabilities</p>
+        <h2>Infrastructure decisions carried through to working systems.</h2>
+        <p>The same approach covers identity, networking, infrastructure as code, delivery, runtime, monitoring, and cost controls on each platform.</p>
       </div>
       <div class="service-grid">
         <article class="service-card featured reveal">
@@ -187,17 +229,38 @@
           <div class="case-stat"><strong>82%</strong><span>less manual audit effort</span></div>
           <div class="case-tags"><span>PowerShell</span><span>CIS</span><span>SOC 2</span></div>
         </article>
+        <article class="case-card reveal">
+          <div class="case-meta"><span>Capacity engineering</span><b>AWS</b></div>
+          <h3>Kubernetes capacity matched to demand</h3>
+          <p>Right-sized non-production Karpenter node pools and separated workloads to reduce idle capacity and contention.</p>
+          <div class="case-stat"><strong>26%</strong><span>lower non-production EC2 spend</span></div>
+          <div class="case-tags"><span>EKS</span><span>Karpenter</span><span>Cost Explorer</span></div>
+        </article>
+        <article class="case-card reveal">
+          <div class="case-meta"><span>Container delivery</span><b>Azure</b></div>
+          <h3>AKS services delivered through Azure Pipelines</h3>
+          <p>Containerized more than 10 microservices and integrated Key Vault, managed identities, and Entra ID RBAC.</p>
+          <div class="case-stat"><strong>50%</strong><span>shorter time to production</span></div>
+          <div class="case-tags"><span>AKS</span><span>Azure Pipelines</span><span>Key Vault</span></div>
+        </article>
+        <article class="case-card reveal">
+          <div class="case-meta"><span>Platform consolidation</span><b>GCP → AWS</b></div>
+          <h3>Airflow orchestration moved off GCP</h3>
+          <p>Migrated ML orchestration from Cloud Composer and GKE onto AWS, then decommissioned the GCP cluster.</p>
+          <div class="case-stat"><strong>GKE</strong><span>decommissioned after migration</span></div>
+          <div class="case-tags"><span>Airflow</span><span>Cloud Composer</span><span>GKE</span></div>
+        </article>
       </div>
       <div class="proof-band reveal">
-        <div><span class="proof-label">This website is part of the proof</span><strong>Tested, containerized, and deployed through the same delivery practices offered to clients.</strong></div>
-        <a href="https://github.com/Kalyana-Sudheer-p/aws-cicd-deployment-demo" target="_blank" rel="noreferrer">View engineering project <span aria-hidden="true">↗</span></a>
+        <div><span class="proof-label">Engineering approach</span><strong>Explore the security and cost choices behind each cloud architecture.</strong></div>
+        <a href="#architecture">Explore the designs <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
     <section class="section process" id="process">
       <div class="section-heading reveal">
         <p class="eyebrow"><span></span> How engagements work</p>
-        <h2>Small enough to start. Structured enough to deliver.</h2>
+        <h2>Clear decisions from design through handover.</h2>
       </div>
       <ol class="process-list">
         <li class="reveal"><span>01</span><div><h3>Discover</h3><p>We map the current workflow, constraints, access model, risks, and a measurable finish line.</p></div></li>
